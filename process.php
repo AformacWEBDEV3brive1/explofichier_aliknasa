@@ -8,7 +8,7 @@ function dossier() {
     $tabl_dossier = preg_split('/\s+/', $liste_dossier);
 
     for ($i=0 ; $i < count($tabl_dossier)-1 ; $i++) {
-        echo "<div class='folder ligne'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        echo "<div class='folder ligne col-md-2'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
     }
 }
 

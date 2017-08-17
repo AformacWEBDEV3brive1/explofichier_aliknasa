@@ -28,7 +28,7 @@
             <div class="row">
                 <input method="post" type="text" name="position" placeholder="/home/boul" class="offset-md-1 col-md-8">
             </div><br>
-            <div id="dossier">
+            <div id="dossier" class="row">
                 <!--liste des fichiers/dossiers-->
             </div>
             <div>
