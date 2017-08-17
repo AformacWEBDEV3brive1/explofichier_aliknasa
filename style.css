@@ -2,3 +2,23 @@ body h1 {
     text-align: center;
 }
 
+#testClickDossier .row
+{
+	background-color: red;
+}
+
+#testClickDossier .bgBleu
+{
+	background-color: blue;
+}
+
+#testClickDossier .bgVert
+{
+	background-color: green;
+}
+
+#testClickDossier .bgRouge
+{
+	background-color: red;
+}
+
