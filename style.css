@@ -38,12 +38,18 @@ body h1 {
     padding: 1%;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 769px){
     .ligne {
         
         margin-right: 2%;
         margin-bottom: 15px;
         width: 25%;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .ligne {
+        margin-bottom: 2%;
     }
 }
 
