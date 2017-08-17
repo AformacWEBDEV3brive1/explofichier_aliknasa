@@ -13,11 +13,10 @@
     </head>
     <body class="container">
         <h1>Votre explorateur de fichiers</h1>
-        <div>
-            <!-- Champs vides pour rentrer un répertoire cible,
-            Champs indiquant le repertoire courant-->
-        </div>
-        <div>
+        <div class="">
+            <input method="post" type="text" name="position" placeholder="/home/boul" class="offset-2 col-8 offset-2">
+        </div><br>
+        <div id="dossier">
             <!--liste des fichiers/dossiers-->
         </div>
         <div>

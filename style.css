@@ -1,4 +1,14 @@
+body {
+    background-color: lightgrey;
+}
 body h1 {
     text-align: center;
+    color: #c12e2a;
+}
+.folder  {
+    border: 1px solid blue;
+    background-color: grey;
+    color: white;
+    width: 30%;
 }
 
