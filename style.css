@@ -4,11 +4,28 @@ body {
 body h1 {
     text-align: center;
     color: #c12e2a;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
+
+
 .folder  {
     border: 1px solid blue;
     background-color: grey;
     color: white;
-    width: 30%;
+    height: 80px;
+    font-size: 15px;
+    padding: 1%;
 }
+
+@media screen and (min-width: 768px){
+    .ligne {
+        
+        margin-right: 2%;
+        margin-bottom: 15px;
+        width: 25%;
+    }
+}
+
+
 
