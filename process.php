@@ -4,7 +4,11 @@ $info = $_POST['folder'];
 $info();
 
 function dossier() {
+<<<<<<< HEAD
     $liste_dossier = shell_exec('ls /home/omeagazord');
+=======
+    $liste_dossier = shell_exec('ls /home/nathaniel');
+>>>>>>> branch 'master' of https://github.com/AformacWEBDEV3brive1/explofichier_aliknasa.git
     $tabl_dossier = preg_split('/\s+/', $liste_dossier);
     for ($i=0 ; $i < count($tabl_dossier)-1 ; $i++) {
         echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-2'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";

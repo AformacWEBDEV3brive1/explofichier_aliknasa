@@ -21,7 +21,7 @@
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <header>
+        <header class="container">
             <h1>Votre explorateur de fichiers</h1>
         </header>
         <div class="container">
