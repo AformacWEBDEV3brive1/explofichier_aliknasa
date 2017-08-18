@@ -7,6 +7,27 @@ body h1 {
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
+#testClickDossier .row
+{
+	background-color: red;
+}
+
+#testClickDossier .bgBleu
+{
+	background-color: blue;
+}
+
+#testClickDossier .bgVert
+{
+	background-color: green;
+}
+
+#testClickDossier .bgRouge
+{
+	background-color: red;
+}
+
 body div div input {
     border-radius:7px;
 }
