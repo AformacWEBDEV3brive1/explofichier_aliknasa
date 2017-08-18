@@ -22,17 +22,23 @@
     <body>
         <div class="container">
             <header>
+                <form>
+                    <input type="button" value="HOME" onclick="window.location.reload(false)">
+                </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>
             <div>
-                <div class="row">
-                    <input type="text" name="position" placeholder="/home/boul" class="offset-md-2 col-md-7"/>
-                </div><br>
-                <div id="dossier" class="row">
-                    <!--liste des fichiers/dossiers-->
+                <div>
+                    <div class="row">
+                        <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
+                       
+                        <input type="text" name="position" placeholder="/home/boul" class="offset-md-2 col-md-8"/>
+                    </div><br>
+                    <div id="dossier" class="row">
+                        <!--liste des fichiers/dossiers-->
+                    </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
-

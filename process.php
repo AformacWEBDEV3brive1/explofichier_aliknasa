@@ -10,10 +10,10 @@ function dossier() {
     $tabl_dossier = preg_split('/\s+/', $liste_dossier);
     for ($i = 0; $i < count($tabl_dossier) - 1; $i++) {
         if (is_dir("/home/nathaniel/" . $tabl_dossier[$i])) {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-2'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
         } 
         else {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-2'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
         }
     }
 }
@@ -34,9 +34,9 @@ function testClickDossier() {
           echo $resultat[$compteur]; */
 
         if (is_dir("/home/nathaniel/". $_POST['dossier']. "/" . $tabl_dossier[$i])) {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-2'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
         } else {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-2'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
         }
     }
 }

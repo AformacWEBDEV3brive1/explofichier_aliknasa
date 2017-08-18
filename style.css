@@ -2,23 +2,37 @@ body {
     background-color: lightgrey;
 }
 body h1 {
+    
     text-align: center;
     color: #c12e2a;
     margin-top: 5%;
     margin-bottom: 5%;
 }
-
+.inputUn{
+    margin-bottom: 2%;
+}
 body div div input {
     border-radius:7px;
     height:50px;
+}
+body div header form input {
+    background-color:darkgrey;
+    margin-top:1%;
+    border-radius:5px;
+    width:15%;
+    height:50px;
+    border-style:inset;
+}
+body div header form input:hover {
+
+    background-color:white;
 }
 .folder  {
     border: 1px solid #0000FF;
     border-radius:10px;
     background-color: #808080;
     color: white;
-    height: 80px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 1%;
     transition: background-color 1s;
 }
@@ -27,23 +41,26 @@ body div div input {
     border-radius:10px;
     background-color: #000000;
     color: #FFFFFF;
-    height: 80px;
-    font-size: 15px;
+    font-size: 13px;
     padding: 1%;
 }
 
 @media screen and (min-width: 769px){
     .ligne {
-        
-        margin-right: 2%;
+        margin-right: 4%;
         margin-bottom: 15px;
-        width: 25%;
+        margin-left: 4%;
     }
 }
 
 @media screen and (max-width: 768px){
     .ligne {
         margin-bottom: 2%;
+    }
+    body div header form input {
+        font-size:75%;
+        width:30%;
+        
     }
 }
 
