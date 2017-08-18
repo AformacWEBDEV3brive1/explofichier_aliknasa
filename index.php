@@ -20,21 +20,18 @@
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <header class="container">
-            <h1>Votre explorateur de fichiers</h1>
-        </header>
-        <div class="col-11">
-            <div class="container">
+        <div class="container">
+            <header>
+                <h1>Votre explorateur de fichiers</h1>
+            </header>
+            <div>
                 <div class="row">
-                    <input type="text" name="position" placeholder="/home/boul" class="offset-md-1 col-md-8"/>
+                    <input type="text" name="position" placeholder="/home/boul" class="offset-md-2 col-md-7"/>
                 </div><br>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
             </div>
-        </div>
-        <div class="col-1">
-            <!--boutton retour-->
         </div>
     </body>
 </html>
