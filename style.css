@@ -8,29 +8,10 @@ body h1 {
     margin-bottom: 5%;
 }
 
-#testClickDossier .row
-{
-	background-color: red;
-}
-
-#testClickDossier .bgBleu
-{
-	background-color: blue;
-}
-
-#testClickDossier .bgVert
-{
-	background-color: green;
-}
-
-#testClickDossier .bgRouge
-{
-	background-color: red;
-}
-
 body div div input {
     border-radius:7px;
 }
+
 
 .folder  {
     border: 1px solid blue;
@@ -51,6 +32,7 @@ body div div input {
     padding: 1%;
     transition: background 3s;
 }
+
 @media screen and (min-width: 769px){
     .ligne {
         
