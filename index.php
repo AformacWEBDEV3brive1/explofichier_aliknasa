@@ -21,7 +21,10 @@
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <header>
+        <header class="container">
+            <form>
+                <input type="button" value="home" onclick="window.location.reload(false)">
+            </form>
             <h1>Votre explorateur de fichiers</h1>
         </header>
         <div class="container">
@@ -37,4 +40,3 @@
         </div>
     </body>
 </html>
-

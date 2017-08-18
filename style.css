@@ -8,14 +8,29 @@ body h1 {
     margin-bottom: 5%;
 }
 
+body div div input {
+    border-radius:7px;
+}
+
 
 .folder  {
     border: 1px solid blue;
-    background-color: grey;
+    border-radius:5px;
+    background: radial-gradient(grey, darkgrey);
     color: white;
     height: 80px;
-    font-size: 15px;
+    font-size: 11px;
     padding: 1%;
+}
+.folder:hover{
+    border: 1px solid red;
+    border-radius:5px;
+    background: linear-gradient(darkgrey, grey);
+    color: white;
+    height: 80px;
+    font-size: 11px;
+    padding: 1%;
+    transition: background 3s;
 }
 
 @media screen and (min-width: 769px){
