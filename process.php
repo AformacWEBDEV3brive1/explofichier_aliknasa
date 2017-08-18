@@ -4,7 +4,7 @@ $info = $_POST['folder'];
 $info();
 
 function dossier() {
-    $liste_dossier = shell_exec('ls /home/boul');
+    $liste_dossier = shell_exec('ls /home/nathaniel');
     $tabl_dossier = preg_split('/\s+/', $liste_dossier);
 
     for ($i=0 ; $i < count($tabl_dossier)-1 ; $i++) {
