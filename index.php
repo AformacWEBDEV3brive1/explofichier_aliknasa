@@ -28,16 +28,18 @@
                 <h1>Votre explorateur de fichiers</h1>
             </header>
             <div>
-                <div>
-                    <div class="row">
+
+                <div class="row">
+                    
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
-                       
-                        <input type="text" name="position" placeholder="/home/boul" class="offset-md-2 col-md-8"/>
-                    </div><br>
-                    <div id="dossier" class="row">
-                        <!--liste des fichiers/dossiers-->
-                    </div>
+                    
+                    
                 </div>
+                <div id="repertoireCourant" class="chemin">/home/boul</div>
+                <div id="dossier" class="row">
+                    <!--liste des fichiers/dossiers-->
+                </div>
+
             </div>
         </div>
     </body>

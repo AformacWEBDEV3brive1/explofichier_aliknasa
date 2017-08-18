@@ -1,6 +1,6 @@
 <?php
 
-$pathTemp = "/home/nathaniel";
+$pathTemp = "/home/boul";
 $info = $_POST['folder'];
 $info();
 
@@ -43,6 +43,16 @@ function testClickDossier() {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
         }
     }
+}
+
+function refreshInput() {
+    
+    $repertoire = $_POST['repertoire'];
+    $command = $repertoire.'/'.$_POST['dossier'];
+    
+    echo '<p>'.$command.'<p/>';
+    
+    
 }
 
 ?>
