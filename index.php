@@ -1,5 +1,4 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
@@ -27,16 +26,18 @@
             </form>
             <h1>Votre explorateur de fichiers</h1>
         </header>
-        <div class="container">
-            <div class="row">
-                <input method="post" type="text" name="position" placeholder="/home/boul" class="offset-md-1 col-md-8">
-            </div><br>
-            <div id="dossier" class="row">
-                <!--liste des fichiers/dossiers-->
+        <div class="col-11">
+            <div class="container">
+                <div class="row">
+                    <input type="text" name="position" placeholder="/home/boul" class="offset-md-1 col-md-8"/>
+                </div><br>
+                <div id="dossier" class="row">
+                    <!--liste des fichiers/dossiers-->
+                </div>
             </div>
-            <div>
-                <!--boutton retour-->
-            </div>
+        </div>
+        <div class="col-1">
+            <!--boutton retour-->
         </div>
     </body>
 </html>

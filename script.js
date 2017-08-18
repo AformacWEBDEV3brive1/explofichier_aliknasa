@@ -13,14 +13,14 @@ function dossier() {
 
 function clickDossier(id)
 {
-    //alert(id);
+	//alert(id);
     $.ajax({
-        url: "process.php",
+        url:"process.php",
         type: "post",
         data: {folder: "testClickDossier", dossier: id},
-        success: function (reponse) {
-            //alert(result);
-            $('#dossier').html(reponse);
+        success:function(reponse){
+        	//alert(result);
+        	$('#dossier').html(reponse);
         }
-    });
+     });
 }
