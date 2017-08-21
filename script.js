@@ -45,4 +45,3 @@ function clickDossier(id)
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-

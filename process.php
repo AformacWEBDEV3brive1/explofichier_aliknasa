@@ -1,25 +1,23 @@
 <?php
 
-$pathTemp = "/home/boul";
+$pathTemp = "/home/nathaniel";
 $info = $_POST['folder'];
 $info();
 
 function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
-    echo $doss;
     $dossier = scandir($doss);
     for ($i = 0; $i < count($dossier); $i++) {
         
         $pathDossier = $_POST['nameFolder'] . '/'.$dossier[$i];
         if (is_dir($pathDossier)) {
-            echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
+            echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
         } else {
-            echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+            echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
         }
     }
     
 }
-
 function dossier() {
     global $pathTemp;
 

@@ -23,7 +23,7 @@
         <div class="container">
             <header>
                 <form>
-                    <input type="button" value="HOME" onclick="history.go(-1)">
+                    <input type="button" value="HOME">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>
@@ -33,7 +33,7 @@
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
                         <input type="submit" value="envoyer" onclick="envoyer()">
                 </div>
-                <div id="repertoireCourant" class="chemin">/home/boul</div>
+                <div id="repertoireCourant" class="chemin">/home/nathaniel</div>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
