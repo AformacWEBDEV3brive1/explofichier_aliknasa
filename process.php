@@ -1,18 +1,19 @@
 <?php
 
-$pathTemp = "/home/boul";
+$pathTemp = "/home/omeagazord";
 $info = $_POST['folder'];
 $info();
 
 function dossier() {
     global $pathTemp;
 
-    $command = "ls " . $pathTemp;
+    //$command = "ls " . $pathTemp;
+    //$liste_dossier = shell_exec($command);
+    //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
     
-    $liste_dossier = shell_exec($command);
-
-    $tabl_dossier = preg_split('/\s+/', $liste_dossier);
-    for ($i = 0; $i < count($tabl_dossier) - 1; $i++) {
+    $tabl_dossier = scandir($pathTemp);
+    
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
         
@@ -26,16 +27,16 @@ function dossier() {
 }
 
 function testClickDossier() {
-    global $pathTemp;
+    //global $pathTemp;
+    //$command = "ls " . $_POST['repertoire'] . '/' . $_POST['dossier'];
+    //$liste_dossier = shell_exec($command);
+    //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
+    
+    $tabl_dossier = scandir($_POST['repertoire'] . '/' . $_POST['dossier']);
 
-    $command = "ls " . $pathTemp . '/' . $_POST['dossier'];
-
-    $liste_dossier = shell_exec($command);
-    $tabl_dossier = preg_split('/\s+/', $liste_dossier);
-
-    for ($i = 0; $i < count($tabl_dossier)-1; $i++) {
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
         
-        $pathDossier = $pathTemp . '/'. $_POST['dossier']. "/" . $tabl_dossier[$i];
+        $pathDossier = $_POST['repertoire'] . '/'. $_POST['dossier']. "/" . $tabl_dossier[$i];
         
         if (is_dir($pathDossier)) {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
@@ -44,6 +45,7 @@ function testClickDossier() {
         }
     }
 }
+        
 
 function refreshInput() {
     
@@ -51,8 +53,6 @@ function refreshInput() {
     $command = $repertoire.'/'.$_POST['dossier'];
     
     echo '<p>'.$command.'<p/>';
-    
-    
 }
 
 ?>

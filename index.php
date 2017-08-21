@@ -35,7 +35,7 @@
                     
                     
                 </div>
-                <div id="repertoireCourant" class="chemin">/home/boul</div>
+                <div id="repertoireCourant" class="chemin">/home/omeagazord</div>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>

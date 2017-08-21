@@ -16,7 +16,7 @@ function clickDossier(id)
     $.ajax({
         url:"process.php",
         type: "post",
-        data: {folder: "testClickDossier", dossier: id},
+        data: {folder: "testClickDossier", dossier: id, repertoire: $('#repertoireCourant').text()},
         success:function(reponse){
         	$('#dossier').html(reponse);
         }
@@ -28,7 +28,5 @@ function clickDossier(id)
          success:function(reponse){
              $('#repertoireCourant').html(reponse);
          }
-             
-         
      });
 }
