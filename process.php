@@ -1,6 +1,7 @@
 <?php
 
-$pathTemp = "/home/boul";
+$pathTemp = isset($_POST['position']);
+echo '<p>'.($pathTemp).'</p>';
 $info = $_POST['folder'];
 $info();
 
@@ -8,18 +9,17 @@ function dossier() {
     global $pathTemp;
 
     $command = "ls " . $pathTemp;
-    
+
     $liste_dossier = shell_exec($command);
 
     $tabl_dossier = preg_split('/\s+/', $liste_dossier);
     for ($i = 0; $i < count($tabl_dossier) - 1; $i++) {
-        
+
         $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
-        
+
         if (is_dir($pathDossier)) {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
-        } 
-        else {
+        } else {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
         }
     }
@@ -32,11 +32,12 @@ function testClickDossier() {
 
     $liste_dossier = shell_exec($command);
     $tabl_dossier = preg_split('/\s+/', $liste_dossier);
+    // \s = espace blanc et s+ pour plusieurs espaces voir regex
 
-    for ($i = 0; $i < count($tabl_dossier)-1; $i++) {
-        
-        $pathDossier = $pathTemp . '/'. $_POST['dossier']. "/" . $tabl_dossier[$i];
-        
+    for ($i = 0; $i < count($tabl_dossier) - 1; $i++) {
+
+        $pathDossier = $pathTemp . '/' . $_POST['dossier'] . "/" . $tabl_dossier[$i];
+
         if (is_dir($pathDossier)) {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
         } else {
@@ -46,13 +47,11 @@ function testClickDossier() {
 }
 
 function refreshInput() {
-    
+
     $repertoire = $_POST['repertoire'];
-    $command = $repertoire.'/'.$_POST['dossier'];
-    
-    echo '<p>'.$command.'<p/>';
-    
-    
+    $command = $repertoire . '/' . $_POST['dossier'];
+
+    echo '<p>' . $command . '<p/>';
 }
 
 ?>

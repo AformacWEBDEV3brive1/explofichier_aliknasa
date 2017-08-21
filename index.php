@@ -2,9 +2,9 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Explorateur de fichier</title>
+        <title>Explorateur de fichiers</title>
 
-        <!-- libaries css-->
+        <!-- libraries css-->
         <link type="text/css" rel="stylesheet" href="libraries/bootstrap/css/bootstrap.css">
         <link type="text/css" rel="stylesheet" href="libraries/font-awesome-4.7.0/css/font-awesome.css">
 
@@ -30,12 +30,10 @@
             <div>
 
                 <div class="row">
-                    
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
-                    
-                    
+                        <input type="submit" value="envoyer" onclick="dossier()">
                 </div>
-                <div id="repertoireCourant" class="chemin">/home/boul</div>
+                <div id="repertoireCourant" class="chemin">/home</div>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
