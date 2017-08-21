@@ -8,9 +8,9 @@ function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
     echo $doss;
     $dossier = scandir($doss);
-    for ($i = 0; $i < count($dossier); $i++) {
+    for ($i = 2; $i < count($dossier); $i++) {
         
-        $pathDossier = $_POST['nameFolder'] . '/'.$dossier[$i];
+        $pathDossier = $doss . '/'.$dossier[$i];
         if (is_dir($pathDossier)) {
             echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
         } else {
@@ -29,7 +29,7 @@ function dossier() {
     
     $tabl_dossier = scandir($pathTemp);
     
-    for ($i = 0; $i < count($tabl_dossier); $i++) {
+    for ($i = 2; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
         
@@ -50,7 +50,7 @@ function testClickDossier() {
     
     $tabl_dossier = scandir($_POST['repertoire'] . '/' . $_POST['dossier']);
 
-    for ($i = 0; $i < count($tabl_dossier); $i++) {
+    for ($i = 2; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $_POST['repertoire'] . '/'. $_POST['dossier']. "/" . $tabl_dossier[$i];
         
@@ -74,7 +74,7 @@ function clickRetour() {
     
     $tabl_dossier = scandir($_POST['repertoire']);
     
-    for ($i = 0; $i < count($tabl_dossier); $i++) {
+    for ($i = 2; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $_POST['repertoire'] . '/'. $tabl_dossier[$i];
         
