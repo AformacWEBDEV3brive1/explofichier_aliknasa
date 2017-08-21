@@ -21,7 +21,7 @@ function dossier() {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
         } 
         else {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
         }
     }
 }
@@ -41,11 +41,10 @@ function testClickDossier() {
         if (is_dir($pathDossier)) {
             echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
         } else {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
         }
     }
-}
-        
+}     
 
 function refreshInput() {
     
@@ -55,4 +54,19 @@ function refreshInput() {
     echo '<p>'.$command.'<p/>';
 }
 
+function clickRetour() {
+    
+    $tabl_dossier = scandir($_POST['repertoire']);
+    
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
+        
+        $pathDossier = $_POST['repertoire'] . '/'. $tabl_dossier[$i];
+        
+        if (is_dir($pathDossier)) {
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        } else {
+            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        }
+    }
+}
 ?>
