@@ -1,23 +1,27 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $pathTemp = "/home/omeagazord";
 $info = $_POST['folder'];
 $info();
 
 function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
-    echo $doss;
     $dossier = scandir($doss);
     for ($i = 2; $i < count($dossier); $i++) {
         
         $pathDossier = $doss . '/'.$dossier[$i];
-        if (is_dir($pathDossier)) {
-            echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
-        } else {
-            echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+        if($dossier[$i][0]!='.')
+        {
+            if (is_dir($pathDossier)) {
+                echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
+            } else {
+                echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+            }
         }
     }
-    
 }
 
 function dossier() {
@@ -33,11 +37,14 @@ function dossier() {
         
         $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
         
-        if (is_dir($pathDossier)) {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
-        } 
-        else{
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        if($tabl_dossier[$i][0]!='.')
+        {
+            if (is_dir($pathDossier)) {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            }
+            else{
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            } 
         }
     }
 }
@@ -54,10 +61,13 @@ function testClickDossier() {
         
         $pathDossier = $_POST['repertoire'] . '/'. $_POST['dossier']. "/" . $tabl_dossier[$i];
         
-        if (is_dir($pathDossier)) {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
-        } else {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        if($tabl_dossier[$i][0]!='.')
+        {
+            if (is_dir($pathDossier)) {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            } else {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            }
         }
     }
 }     
@@ -78,10 +88,13 @@ function clickRetour() {
         
         $pathDossier = $_POST['repertoire'] . '/'. $tabl_dossier[$i];
         
-        if (is_dir($pathDossier)) {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
-        } else {
-            echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        if($tabl_dossier[$i][0]!='.')
+        {
+            if (is_dir($pathDossier)) {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            } else {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            }
         }
     }
 }
