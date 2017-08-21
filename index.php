@@ -23,13 +23,14 @@
         <div class="container">
             <header>
                 <form>
-                    <input type="button" value="HOME">
+                    <input id ="retour" type="button" value="Retour" onclick="clickRetour()">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>
             <div>
 
                 <div class="row">
+                    
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
                         <input type="submit" value="envoyer" onclick="envoyer()">
                 </div>
