@@ -13,8 +13,6 @@ function dossier() {
 
 function clickDossier(id)
 {
-    alert("test");
-    alert($('#repertoireCourant').text());
     $.ajax({
         url:"process.php",
         type: "post",
@@ -32,4 +30,7 @@ function clickDossier(id)
          }
      });
 }
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 
