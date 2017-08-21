@@ -10,7 +10,7 @@ $info();
 function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
     $dossier = scandir($doss);
-    for ($i = 2; $i < count($dossier); $i++) {
+    for ($i = 0; $i < count($dossier); $i++) {
         
         $pathDossier = $doss . '/'.$dossier[$i];
         if($dossier[$i][0]!='.')
@@ -25,7 +25,7 @@ function envoyer() {
 }
 
 function dossier() {
-    global $pathTemp;
+     $pathTemp = "/home/".$_POST['user'];
 
     //$command = "ls " . $pathTemp;
     //$liste_dossier = shell_exec($command);
@@ -33,7 +33,7 @@ function dossier() {
     
     $tabl_dossier = scandir($pathTemp);
     
-    for ($i = 2; $i < count($tabl_dossier); $i++) {
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
         
@@ -57,7 +57,7 @@ function testClickDossier() {
     
     $tabl_dossier = scandir($_POST['repertoire'] . '/' . $_POST['dossier']);
 
-    for ($i = 2; $i < count($tabl_dossier); $i++) {
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $_POST['repertoire'] . '/'. $_POST['dossier']. "/" . $tabl_dossier[$i];
         
@@ -84,7 +84,7 @@ function clickRetour() {
     
     $tabl_dossier = scandir($_POST['repertoire']);
     
-    for ($i = 2; $i < count($tabl_dossier); $i++) {
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
         
         $pathDossier = $_POST['repertoire'] . '/'. $tabl_dossier[$i];
         
