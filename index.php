@@ -23,7 +23,7 @@
         <div class="container">
             <header>
                 <form>
-                    <input type="button" value="HOME" onclick="history.go(-1)">
+                    <input id ="retour" type="button" value="Retour" onclick="clickRetour()">
                     <input type="button" value="+" onclick="creation()">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
@@ -31,6 +31,7 @@
             <div>
 
                 <div class="row">
+                    
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
                         <input type="submit" value="envoyer" onclick="envoyer()">
                 </div>
