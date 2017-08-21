@@ -32,7 +32,7 @@
                 <div class="row">
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
                 </div>
-                <div id="repertoireCourant" class="chemin">/home/boul</div>
+                <div id="repertoireCourant" class="chemin">/home/nathaniel</div>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
