@@ -23,17 +23,14 @@
         <div class="container">
             <header>
                 <form>
-                    <input type="button" value="HOME" onclick="window.location.reload(false)">
+                    <input type="button" value="HOME" onclick="history.go(-1)">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>
             <div>
 
                 <div class="row">
-                    
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
-                    
-                    
                 </div>
                 <div id="repertoireCourant" class="chemin">/home/boul</div>
                 <div id="dossier" class="row">
