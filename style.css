@@ -39,7 +39,7 @@ body div header form input:hover {
     color: white;
     font-size: 13px;
     padding: 1%;
-    transition: background-color 1s;
+    transition: background-color 0.5s;
 }
 .folder:hover{
     border: 1px solid #FF0000;

@@ -23,7 +23,7 @@
         <div class="container">
             <header>
                 <form>
-                    <input type="button" value="HOME" onclick="window.location.reload(false)">
+                    <input type="button" value="HOME" onclick="history.go(-1)">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>
