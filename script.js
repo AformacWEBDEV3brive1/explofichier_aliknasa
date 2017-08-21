@@ -1,4 +1,4 @@
-
+dossier();
 
 function dossier() {
     $.ajax({
@@ -9,34 +9,36 @@ function dossier() {
             $('#dossier').html(reponse);
         }
     });
+}
+
+function envoyer() {
     $.ajax({
         type: "post",
         url: "process.php",
-        data: {nameFolder: doss.text()},
-        success:function(reponse) {
-            alert('ça fonctionne');
+        data: {folder: 'envoyer', nameFolder: document.getElementsByTagName('input')[1].value},
+        success: function (reponse) {
+            $('#dossier').html(reponse);
         }
     });
 }
 
+
 function clickDossier(id)
 {
     $.ajax({
-        url:"process.php",
+        url: "process.php",
         type: "post",
-        data: {folder: "testClickDossier", dossier: id},
-        success:function(reponse){
-        	$('#dossier').html(reponse);
+        data: {folder: "testClickDossier", dossier: id, repertoire: $('#repertoireCourant').text()},
+        success: function (reponse) {
+            $('#dossier').html(reponse);
         }
-     });
-     $.ajax({
-         url:"process.php",
-         type:"post",
-         data: {folder: "refreshInput", dossier: id, repertoire: $('#repertoireCourant').text()},
-         success:function(reponse){
-             $('#repertoireCourant').html(reponse);
-         }
-             
-         
-     });
+    });
+    $.ajax({
+        url: "process.php",
+        type: "post",
+        data: {folder: "refreshInput", dossier: id, repertoire: $('#repertoireCourant').text()},
+        success: function (reponse) {
+            $('#repertoireCourant').html(reponse);
+        }
+    });
 }

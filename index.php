@@ -31,9 +31,9 @@
 
                 <div class="row">
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
-                        <input type="submit" value="envoyer" onclick="dossier()">
+                        <input type="submit" value="envoyer" onclick="envoyer()">
                 </div>
-                <div id="repertoireCourant" class="chemin">/home</div>
+                <div id="repertoireCourant" class="chemin">/home/boul</div>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
