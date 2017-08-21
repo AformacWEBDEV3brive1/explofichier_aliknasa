@@ -24,6 +24,7 @@
             <header>
                 <form>
                     <input type="button" value="HOME" onclick="history.go(-1)">
+                    <input type="button" value="+" onclick="creation()">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>

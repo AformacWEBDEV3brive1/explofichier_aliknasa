@@ -46,3 +46,15 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 
+/*function creation() {
+    var dde = prompt("Quel nom donnez-vous à ce fichier?");
+    $.ajax({
+        url: process.php,
+        type: "post",
+        data: {folder: "creation", dossier: dde},
+        success: function(reponse){
+            $("#dossier").html(reponse);
+        }
+    });
+}*/
+
