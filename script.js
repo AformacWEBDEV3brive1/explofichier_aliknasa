@@ -11,6 +11,17 @@ function dossier() {
     });
 }
 
+function envoyer() {
+    $.ajax({
+        type: "post",
+        url: "process.php",
+        data: {folder: 'envoyer', nameFolder: document.getElementsByTagName('input')[1].value},
+        success: function (reponse) {
+            $('#dossier').html(reponse);
+        }
+    });
+}
+
 function clickDossier(id)
 {
     $.ajax({
@@ -61,3 +72,7 @@ function clickRetour()
 
  
 }
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+
