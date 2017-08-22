@@ -1,6 +1,22 @@
-dossier();
+//dossier();
 
-function dossier() {
+function demander()
+{
+    var person = prompt("Entrez votre prénom");
+    if (person != null){
+        $("#repertoireCourant").html("/home/"+person);
+    }
+    $.ajax({
+        type: "post",
+        url: "process.php",
+        data: {folder: 'dossier',user: person },
+        success: function (reponse) {
+            $('#dossier').html(reponse);
+        }
+    });
+}
+
+/*function dossier() {
     $.ajax({
         type: "post",
         url: "process.php",
@@ -9,7 +25,7 @@ function dossier() {
             $('#dossier').html(reponse);
         }
     });
-}
+}*/
 
 function envoyer() {
     $.ajax({
