@@ -11,16 +11,16 @@ function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
     if(is_dir($doss) == true)
     {
-        $dossier = scandir($doss);
-        for ($i = 0; $i < count($dossier); $i++) {
+        $tabl_dossier = scandir($doss);
+        for ($i = 0; $i < count($tabl_dossier); $i++) {
             
-            $pathDossier = $doss . '/'.$dossier[$i];
-            if($dossier[$i][0]!='.')
+            $pathDossier = $doss . '/'.$tabl_dossier[$i];
+            if($tabl_dossier[$i][0]!='.')
             {
                 if (is_dir($pathDossier)) {
-                    echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${$tabl_dossier[$i]}</p></div>";
                 } else {
-                    echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${$tabl_dossier[$i]}</p><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/></div>";
                 }
             }
         }
@@ -62,10 +62,10 @@ function dossier() {
             if($tabl_dossier[$i][0]!='.')
             {
                 if (is_dir($pathDossier)) {
-                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
                 }
                 else{
-                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/></div>";
                 } 
             }
         }
@@ -91,9 +91,9 @@ function testClickDossier() {
         if($tabl_dossier[$i][0]!='.')
         {
             if (is_dir($pathDossier)) {
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
             } else {
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/></div>";
             }
         }
     }
@@ -113,6 +113,45 @@ function creation() {
     $command = shell_exec('touch '.$_POST['repertoire'].'/'.$element. '.txt'.' 2>&1');
     //print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
     //print_r($command);
+    //print_r(shell_exec("whoami"));
+    
+    $tabl_dossier = scandir($_POST['repertoire']);
+    
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
+        
+        $pathDossier = $_POST['repertoire'] . '/' . $tabl_dossier[$i];
+        
+        if($tabl_dossier[$i][0]!='.')
+        {
+            if (is_dir($pathDossier)) {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            } else {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/></div>";
+            }
+        }
+    }
+}
+
+function suppression()
+{
+    $command = shell_exec('rm '. $_POST['fichier']);
+    //echo "Le fichier" . $_POST['fichier'] . " a été supprimé";
+    
+    $tabl_dossier = scandir($_POST['repertoire']);
+    
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
+        
+        $pathDossier = $_POST['repertoire'] . '/' . $tabl_dossier[$i];
+        
+        if($tabl_dossier[$i][0]!='.')
+        {
+            if (is_dir($pathDossier)) {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+            } else {
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/></div>";
+            }
+        }
+    }
 }
 
 function clickRetour() {
@@ -128,7 +167,7 @@ function clickRetour() {
             if (is_dir($pathDossier)) {
                 echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
             } else {
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/></div>";
             }
         }
     }
