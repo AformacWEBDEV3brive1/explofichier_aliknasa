@@ -2,7 +2,7 @@
 
 function demander()
 {
-    var person = prompt("Entrez votre prénom");
+    var person = prompt("Entrez votre nom d'utilisateur");
     if (person != null && person != ""){
         $("#repertoireCourant").html("/home/"+person);
         
@@ -36,8 +36,7 @@ function demander()
     	document.getElementsByTagName('input')[2].disabled = true;
     	document.getElementsByTagName('input')[3].disabled = true;
     }
-    $('.test1').addClass('animated fadeInDown');
-    $('.test').addClass('animated swing');
+    $('i').addClass('animated fadeInDown');
 }
 
 /*function dossier() {
@@ -152,4 +151,19 @@ function creation() {
     });
 }
 
-
+function suppression(nomFichier) {
+	var path = $('#repertoireCourant').text() + '/' + nomFichier;
+	
+	if(confirm("Attention: Etes-vous certain de vouloir supprimer ce fichier? Suppression de " + path))
+	{
+	    $.ajax({
+	        url: "process.php",
+	        type: "post",
+	        data: {folder: "suppression", repertoire: $('#repertoireCourant').text(), fichier: path},
+	        success: function(reponse){
+	            $("#dossier").html(reponse);
+	        	alert("Le fichier" + path + " a été supprimé");
+	        }
+	    });
+	}
+}

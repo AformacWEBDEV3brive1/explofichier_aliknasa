@@ -32,6 +32,22 @@ body div header form input:hover {
 
     background-color:white;
 }
+.btnSuppression
+{
+	/*width: 1%;*/
+	border-radius:10px;
+	border-color: red;
+	background-color: #ff6666;
+        float:right;
+}
+
+.btnSuppression:hover
+{
+	/*width: 1%;*/
+	border-radius:10px;
+	background-color: red;
+}
+
 .folder  {
     border: 1px solid #0000FF;
     border-radius:10px;
