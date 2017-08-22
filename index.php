@@ -31,9 +31,9 @@
             <div>
 
                 <div class="row">
-                    
-                        <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
-                        <input type="submit" value="envoyer" onclick="envoyer()">
+                    <p class="col-2 home">/home/</p>
+                    <input type="text" name="position" class="inputUn col-7 "/>
+                    <input type="submit" class="col-2" value="envoyer" onclick="envoyer()">
                 </div>
                 <div id="repertoireCourant" class="chemin"></div>
                 <div id="dossier" class="row">
