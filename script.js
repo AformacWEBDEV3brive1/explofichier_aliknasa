@@ -36,6 +36,8 @@ function demander()
     	document.getElementsByTagName('input')[2].disabled = true;
     	document.getElementsByTagName('input')[3].disabled = true;
     }
+    $('.test1').addClass('animated fadeInDown');
+    $('.test').addClass('animated swing');
 }
 
 /*function dossier() {
@@ -149,4 +151,5 @@ function creation() {
         }
     });
 }
+
 
