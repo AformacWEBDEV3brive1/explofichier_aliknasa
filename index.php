@@ -19,7 +19,7 @@
         <!-- custom js  -->
         <script type="text/javascript" src="script.js"></script>
     </head>
-    <body>
+    <body onload="demander()">
         <div class="container">
             <header>
                 <form>
@@ -34,7 +34,7 @@
                         <input type="text" name="position" class="inputUn offset-md-2 col-md-8"/>
                         <input type="submit" value="envoyer" onclick="envoyer()">
                 </div>
-                <div id="repertoireCourant" class="chemin">/home/omeagazord</div>
+                <div id="repertoireCourant" class="chemin"></div>
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
