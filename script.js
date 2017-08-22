@@ -1,8 +1,7 @@
-dossier();
 
 function demander()
 {
-    var person = prompt("Entrez votre prénom");
+    var person = prompt("Entrez votre nom d'utilisateur :");
     if (person != null){
         $("#repertoireCourant").html("/home/"+person);
     }
@@ -15,8 +14,7 @@ function demander()
         }
     });
 }
-
-function dossier() {
+/*function dossier() {
     $.ajax({
         type: "post",
         url: "process.php",
@@ -25,8 +23,7 @@ function dossier() {
             $('#dossier').html(reponse);
         }
     });
-}
-
+}*/
 function envoyer() {
     $.ajax({
         type: "post",
@@ -37,7 +34,7 @@ function envoyer() {
         }
     });
     
-    $('#repertoireCourant').html("/home/" + document.getElementsByTagName('input')[1].value);
+    $('#repertoireCourant').html("/home/" + document.getElementsByTagName('input')[2].value);
 }
 
 function clickDossier(id)

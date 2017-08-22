@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$pathTemp = "/home/boul";
+//$pathTemp = "/home/boul";
 $info = $_POST['folder'];
 $info();
 
@@ -76,7 +76,7 @@ function refreshInput() {
 
     $repertoire = $_POST['repertoire'];
     $command = $repertoire . '/' . $_POST['dossier'];
-
+    //print_r($command);
     echo '<p>' . $command . '<p/>';
 }
 
@@ -84,8 +84,8 @@ function creation() {
     $element = $_POST["dossier"];
     $repert = $_POST['repertoire'];
     $command = shell_exec('touch '.$_POST['repertoire'].'/'.$element. '.txt'.' 2>&1');
-    print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
-    print_r($command);
+    //print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
+    //print_r($command);
 }
 
 function clickRetour() {
