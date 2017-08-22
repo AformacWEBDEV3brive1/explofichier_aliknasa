@@ -20,6 +20,7 @@ function envoyer() {
             $('#dossier').html(reponse);
         }
     });
+    
     $('#repertoireCourant').html("/home/" + document.getElementsByTagName('input')[1].value);
 }
 
