@@ -1,8 +1,8 @@
-dossier();
+//dossier();
 
 function demander()
 {
-    var person = prompt("Entrez votre prénom");
+    var person = prompt("Entrez votre nom utilisateur");
     if (person != null){
         $("#repertoireCourant").html("/home/"+person);
     }
@@ -16,7 +16,7 @@ function demander()
     });
 }
 
-function dossier() {
+/*function dossier() {
     $.ajax({
         type: "post",
         url: "process.php",
@@ -25,7 +25,7 @@ function dossier() {
             $('#dossier').html(reponse);
         }
     });
-}
+}*/
 
 function envoyer() {
     $.ajax({
