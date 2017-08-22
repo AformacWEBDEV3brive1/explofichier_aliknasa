@@ -82,13 +82,8 @@ function refreshInput() {
 
 function creation() {
     $element = $_POST["dossier"];
-
-    //print_r($_POST['repertoire']."touch $element.txt");
-    //$command = 'touch ' .$element.'.txt';
-    //$command = 'touch '.$_POST['repertoire'] . $element . '.txt';
     $repert = $_POST['repertoire'];
     $command = shell_exec('touch '.$_POST['repertoire'].'/'.$element. '.txt'.' 2>&1');
-    //$command = shell_exec('whoami');
     print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
     print_r($command);
 }
