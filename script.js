@@ -2,7 +2,7 @@
 
 function demander()
 {
-    var person = prompt("Entrez votre prénom");
+    var person = prompt("Entrez votre nom d'utulisateur");
     if (person != null && person != ""){
         $("#repertoireCourant").html("/home/"+person);
         
