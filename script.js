@@ -31,7 +31,7 @@ function envoyer() {
     $.ajax({
         type: "post",
         url: "process.php",
-        data: {folder: 'envoyer', nameFolder: document.getElementsByTagName('input')[1].value},
+        data: {folder: 'envoyer', nameFolder: document.getElementsByTagName('input')[2].value},
         success: function (reponse) {
             $('#dossier').html(reponse);
         }
@@ -93,4 +93,16 @@ function clickRetour()
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
+
+function creation() {
+    var dde = prompt("Quel nom donnez-vous à ce fichier?");
+    $.ajax({
+        url: "process.php",
+        type: "post",
+        data: {folder: "creation", dossier: dde, repertoire: $('#repertoireCourant').text()},
+        success: function(reponse){
+            $("#dossier").html(reponse);
+        }
+    });
+}
 

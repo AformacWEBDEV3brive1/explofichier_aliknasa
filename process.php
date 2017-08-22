@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$pathTemp = "/home/omeagazord";
+$pathTemp = "/home/boul";
 $info = $_POST['folder'];
 $info();
 
@@ -30,7 +30,7 @@ function dossier() {
     //$command = "ls " . $pathTemp;
     //$liste_dossier = shell_exec($command);
     //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
-    
+
     $tabl_dossier = scandir($pathTemp);
     
     for ($i = 0; $i < count($tabl_dossier); $i++) {
@@ -54,7 +54,7 @@ function testClickDossier() {
     //$command = "ls " . $_POST['repertoire'] . '/' . $_POST['dossier'];
     //$liste_dossier = shell_exec($command);
     //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
-    
+
     $tabl_dossier = scandir($_POST['repertoire'] . '/' . $_POST['dossier']);
 
     for ($i = 0; $i < count($tabl_dossier); $i++) {
@@ -70,18 +70,26 @@ function testClickDossier() {
             }
         }
     }
-}     
+}
 
 function refreshInput() {
-    
+
     $repertoire = $_POST['repertoire'];
-    $command = $repertoire.'/'.$_POST['dossier'];
-    
-    echo '<p>'.$command.'<p/>';
+    $command = $repertoire . '/' . $_POST['dossier'];
+
+    echo '<p>' . $command . '<p/>';
+}
+
+function creation() {
+    $element = $_POST["dossier"];
+    $repert = $_POST['repertoire'];
+    $command = shell_exec('touch '.$_POST['repertoire'].'/'.$element. '.txt'.' 2>&1');
+    print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
+    print_r($command);
 }
 
 function clickRetour() {
-    
+
     $tabl_dossier = scandir($_POST['repertoire']);
     
     for ($i = 0; $i < count($tabl_dossier); $i++) {
@@ -98,4 +106,5 @@ function clickRetour() {
         }
     }
 }
+
 ?>
