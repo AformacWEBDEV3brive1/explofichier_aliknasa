@@ -3,25 +3,44 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$pathTemp = "/home/boul";
+//$pathTemp = "/home/boul";
 $info = $_POST['folder'];
 $info();
 
 function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
-    $dossier = scandir($doss);
-    for ($i = 0; $i < count($dossier); $i++) {
-        
-        $pathDossier = $doss . '/'.$dossier[$i];
-        if($dossier[$i][0]!='.')
-        {
-            if (is_dir($pathDossier)) {
-                echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
-            } else {
-                echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+    if(is_dir($doss) == true)
+    {
+        $dossier = scandir($doss);
+        for ($i = 0; $i < count($dossier); $i++) {
+            
+            $pathDossier = $doss . '/'.$dossier[$i];
+            if($dossier[$i][0]!='.')
+            {
+                if (is_dir($pathDossier)) {
+                    echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
+                } else {
+                    echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+                }
             }
         }
     }
+    else
+    {
+        echo "Nom de dossier invalide";
+    }
+    
+    /*try{
+        $dossier = scandir($doss);
+        echo $dossier;
+    }
+    catch (Exception $e){
+        echo "Mauvais nom de dossier";
+        //echo $e->getMessage();
+    }*/
+    
+    
+    
 }
 
 function dossier() {
