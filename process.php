@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$pathTemp = "/home/boul";
+//$pathTemp = "/home/boul";
 $info = $_POST['folder'];
 $info();
 
