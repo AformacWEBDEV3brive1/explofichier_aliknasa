@@ -9,19 +9,38 @@ $info();
 
 function envoyer() {
     $doss = "/home/".$_POST['nameFolder'];
-    $dossier = scandir($doss);
-    for ($i = 0; $i < count($dossier); $i++) {
-        
-        $pathDossier = $doss . '/'.$dossier[$i];
-        if($dossier[$i][0]!='.')
-        {
-            if (is_dir($pathDossier)) {
-                echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
-            } else {
-                echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+    if(is_dir($doss) == true)
+    {
+        $dossier = scandir($doss);
+        for ($i = 0; $i < count($dossier); $i++) {
+            
+            $pathDossier = $doss . '/'.$dossier[$i];
+            if($dossier[$i][0]!='.')
+            {
+                if (is_dir($pathDossier)) {
+                    echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${dossier[$i]}</p></div>";
+                } else {
+                    echo "<div id='" . $dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${dossier[$i]}</p></div>";
+                }
             }
         }
     }
+    else
+    {
+        echo "Nom de dossier invalide";
+    }
+    
+    /*try{
+        $dossier = scandir($doss);
+        echo $dossier;
+    }
+    catch (Exception $e){
+        echo "Mauvais nom de dossier";
+        //echo $e->getMessage();
+    }*/
+    
+    
+    
 }
 
 function dossier() {
@@ -31,22 +50,30 @@ function dossier() {
     //$liste_dossier = shell_exec($command);
     //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
 
-    $tabl_dossier = scandir($pathTemp);
-    
-    for ($i = 0; $i < count($tabl_dossier); $i++) {
+     
+     if(is_dir($pathTemp) == true)
+     {
+        $tabl_dossier = scandir($pathTemp);
         
-        $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
-        
-        if($tabl_dossier[$i][0]!='.')
-        {
-            if (is_dir($pathDossier)) {
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        for ($i = 0; $i < count($tabl_dossier); $i++) {
+            
+            $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
+            
+            if($tabl_dossier[$i][0]!='.')
+            {
+                if (is_dir($pathDossier)) {
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                }
+                else{
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                } 
             }
-            else{
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
-            } 
         }
-    }
+     }
+     else
+     {
+         echo "Nom d'utilisateur invalide";
+     }
 }
 
 function testClickDossier() {
@@ -76,7 +103,7 @@ function refreshInput() {
 
     $repertoire = $_POST['repertoire'];
     $command = $repertoire . '/' . $_POST['dossier'];
-
+    //print_r($command);
     echo '<p>' . $command . '<p/>';
 }
 
@@ -84,8 +111,8 @@ function creation() {
     $element = $_POST["dossier"];
     $repert = $_POST['repertoire'];
     $command = shell_exec('touch '.$_POST['repertoire'].'/'.$element. '.txt'.' 2>&1');
-    print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
-    print_r($command);
+    //print_r('touch '.$_POST['repertoire'].'/'.$element. '.txt');
+    //print_r($command);
 }
 
 function clickRetour() {
@@ -99,7 +126,7 @@ function clickRetour() {
         if($tabl_dossier[$i][0]!='.')
         {
             if (is_dir($pathDossier)) {
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3'onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
             } else {
                 echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
             }

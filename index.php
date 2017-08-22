@@ -24,7 +24,7 @@
             <header>
                 <form>
                     <input id ="retour" type="button" value="Retour" onclick="clickRetour()">
-                    <input type="button" value="+" onclick="creation()">
+                    <input type="button" value="ajout fichier" onclick="creation()">
                 </form>
                 <h1>Votre explorateur de fichiers</h1>
             </header>

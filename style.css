@@ -66,7 +66,13 @@ body div header form input:hover {
 
 @media screen and (max-width: 768px){
     .ligne {
-        margin-bottom: 2%;
+        margin-bottom: 5%;
+        font-size: 150%;
+        text-align: center;
+    }
+    .ligne:hover{
+        font-size:150%;
+        text-align: center;
     }
     body div header form input {
         font-size:75%;

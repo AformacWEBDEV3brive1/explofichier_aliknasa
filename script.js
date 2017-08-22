@@ -2,18 +2,40 @@
 
 function demander()
 {
-    var person = prompt("Entrez votre nom utilisateur");
-    if (person != null){
+    var person = prompt("Entrez votre prénom");
+    if (person != null && person != ""){
         $("#repertoireCourant").html("/home/"+person);
+        
+        $.ajax({
+            type: "post",
+            url: "process.php",
+            data: {folder: 'dossier',user: person },
+            success: function (reponse) {
+            	if(reponse == "Nom d'utilisateur invalide")
+            		{
+            			alert(reponse);
+            	    	document.getElementsByTagName('input')[0].disabled = true;
+            	    	document.getElementsByTagName('input')[1].disabled = true;
+            	    	document.getElementsByTagName('input')[2].disabled = true;
+            	    	document.getElementsByTagName('input')[3].disabled = true;
+            	    	$("#repertoireCourant").html("Vous avez entré un nom d'utilisateur incorrect, veuillez rafraîchir la page");
+            			
+            		}
+            	else
+            		{
+            			$('#dossier').html(reponse);
+            		}
+            }
+        });
     }
-    $.ajax({
-        type: "post",
-        url: "process.php",
-        data: {folder: 'dossier',user: person },
-        success: function (reponse) {
-            $('#dossier').html(reponse);
-        }
-    });
+    else
+    {
+    	$("#repertoireCourant").html("Vous avez oublié d'entrer votre nom d'utilisateur, veuillez rafraîchir la page");
+    	document.getElementsByTagName('input')[0].disabled = true;
+    	document.getElementsByTagName('input')[1].disabled = true;
+    	document.getElementsByTagName('input')[2].disabled = true;
+    	document.getElementsByTagName('input')[3].disabled = true;
+    }
 }
 
 /*function dossier() {
@@ -33,11 +55,29 @@ function envoyer() {
         url: "process.php",
         data: {folder: 'envoyer', nameFolder: document.getElementsByTagName('input')[2].value},
         success: function (reponse) {
-            $('#dossier').html(reponse);
+        	if(reponse == "Nom de dossier invalide")
+        	{
+        		$('#repertoireCourant').html("/home");
+        		alert(reponse);
+        		
+                $.ajax({
+                    type: "post",
+                    url: "process.php",
+                    data: {folder: 'dossier',user: "" },
+                    success: function (reponse) {
+                        $('#dossier').html(reponse);
+                    }
+                });
+        		
+        	}
+        	else
+        	{
+        		$('#dossier').html(reponse);
+        		$('#repertoireCourant').html("/home/" + document.getElementsByTagName('input')[2].value);
+        	}
+            
         }
-    });
-    
-    $('#repertoireCourant').html("/home/" + document.getElementsByTagName('input')[1].value);
+    }); 
 }
 
 function clickDossier(id)
@@ -65,30 +105,34 @@ function clickRetour()
 {
 	var path = $('#repertoireCourant').text();
 	
-	var tableauDossiers = path.split("/");
-
-	var newPath = "";
-	for(var i = 1; i<tableauDossiers.length-1;i++)
-	{
-		newPath += "/" + tableauDossiers[i];
-	}
+	if(path != "/home")
+		{
+			var tableauDossiers = path.split("/");
 	
-	/*Refresh repertoire courant*/
-    $('#repertoireCourant').html(newPath);
-	
-    
-    /*Refresh dossiers*/
-    $.ajax({
-        url:"process.php",
-        type: "post",
-        data: {folder: "clickRetour", repertoire:  newPath},
-        success:function(reponse){
-        	$('#dossier').html(reponse);
-        }
-     });
-
-
- 
+			var newPath = "";
+			for(var i = 1; i<tableauDossiers.length-1;i++)
+			{
+				newPath += "/" + tableauDossiers[i];
+			}
+			
+			/*Refresh repertoire courant*/
+		    $('#repertoireCourant').html(newPath);
+			
+		    
+		    /*Refresh dossiers*/
+		    $.ajax({
+		        url:"process.php",
+		        type: "post",
+		        data: {folder: "clickRetour", repertoire:  newPath},
+		        success:function(reponse){
+		        	$('#dossier').html(reponse);
+		        }
+		     });
+		}
+	else
+		{
+			alert("Vous ne pouvez pas remonter plus haut que /home");
+		} 
 }
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
