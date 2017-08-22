@@ -50,22 +50,30 @@ function dossier() {
     //$liste_dossier = shell_exec($command);
     //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
 
-    $tabl_dossier = scandir($pathTemp);
-    
-    for ($i = 0; $i < count($tabl_dossier); $i++) {
+     
+     if(is_dir($pathTemp) == true)
+     {
+        $tabl_dossier = scandir($pathTemp);
         
-        $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
-        
-        if($tabl_dossier[$i][0]!='.')
-        {
-            if (is_dir($pathDossier)) {
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+        for ($i = 0; $i < count($tabl_dossier); $i++) {
+            
+            $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
+            
+            if($tabl_dossier[$i][0]!='.')
+            {
+                if (is_dir($pathDossier)) {
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                }
+                else{
+                    echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
+                } 
             }
-            else{
-                echo "<div id='" . $tabl_dossier[$i] . "' class='folder ligne col-md-3' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier))."'><i class='fa fa-2x fa-file-o'></i><p>${tabl_dossier[$i]}</p></div>";
-            } 
         }
-    }
+     }
+     else
+     {
+         echo "Nom d'utilisateur invalide";
+     }
 }
 
 function testClickDossier() {

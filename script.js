@@ -3,7 +3,7 @@
 function demander()
 {
     var person = prompt("Entrez votre prénom");
-    if (person != null){
+    if (person != null && person != ""){
         $("#repertoireCourant").html("/home/"+person);
         
         $.ajax({
@@ -11,7 +11,20 @@ function demander()
             url: "process.php",
             data: {folder: 'dossier',user: person },
             success: function (reponse) {
-                $('#dossier').html(reponse);
+            	if(reponse == "Nom d'utilisateur invalide")
+            		{
+            			alert(reponse);
+            	    	document.getElementsByTagName('input')[0].disabled = true;
+            	    	document.getElementsByTagName('input')[1].disabled = true;
+            	    	document.getElementsByTagName('input')[2].disabled = true;
+            	    	document.getElementsByTagName('input')[3].disabled = true;
+            	    	$("#repertoireCourant").html("Vous avez entré un nom d'utilisateur incorrect, veuillez rafraîchir la page");
+            			
+            		}
+            	else
+            		{
+            			$('#dossier').html(reponse);
+            		}
             }
         });
     }
