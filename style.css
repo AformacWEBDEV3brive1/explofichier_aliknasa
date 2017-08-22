@@ -49,6 +49,12 @@ body div header form input:hover {
     font-size: 13px;
     padding: 1%;
 }
+.home
+{
+    font-size: 21px;
+    padding-top: 9px;
+    text-align: right;
+}
 
 @media screen and (min-width: 769px){
     .ligne {
@@ -68,6 +74,5 @@ body div header form input:hover {
 
     }
 }
-
 
 
