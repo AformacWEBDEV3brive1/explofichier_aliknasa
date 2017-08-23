@@ -1,4 +1,4 @@
-
+/*Fonction qui sert a enclencher les fonctions dossiers et getOS dans process.php*/
 /*Cette fonction s'enclenche lorsque le chargement de la page se termine*/
 
 function demander(){
@@ -42,7 +42,7 @@ function demander(){
     }
     $('i').addClass('animated fadeInDown');
 }
-
+/*Fonction qui sert a enclencher la fonction dossier dans process.php*/
 /*Cette fonction s'enclenche lors du clique sur le bouton envoyer*/
 
 function envoyer(){
@@ -70,6 +70,7 @@ function envoyer(){
         }
     });
 }
+/*Fonction qui sert a enclencher les fonctions testClickDossier et refreshInput dans process.php*/
 /* Cette fonction s'enclenche lors du clique sur un dossier */
 function clickDossier(id){
     $.ajax({
@@ -89,6 +90,7 @@ function clickDossier(id){
         }
     });
 }
+/*Fonction qui enclenche la fonction clickRetour dans process.php*/
 /*Cette fonction s'enclenche lors du clique sur le bouton retour*/
 function clickRetour(){
     var path = $('#repertoireCourant').text();
@@ -114,10 +116,12 @@ function clickRetour(){
         alert("Vous ne pouvez pas remonter plus haut que /home");
     }
 }
+/*Fonction qui sert a afficher un title*/
 /*Cette fonction s'enclenche lorsque la page a fini son chargement*/
 $(document).ready(function (){
     $('[data-toggle="tooltip"]').tooltip();
 });
+/*Fonction qui sert a enclencher la fonction creation dans process.php*/
 /*cette fonction s'enclenche lors du clique sur le bouton d'ajout d'un fichier*/
 function creation(){
     var dde = prompt("Quel nom donnez-vous à ce fichier?");
@@ -130,6 +134,7 @@ function creation(){
         }
     });
 }
+/*Fonction qui sert a enclencher la fonction renommer dans process.php*/
 /*Cette fonction s'enclenche lors d'un clique sur le bouton renommer*/
 function renommer(nomFichier){
     var path = $('#repertoireCourant').text() + '/' + nomFichier;
@@ -150,6 +155,7 @@ function renommer(nomFichier){
         alert("Vous ne pouvez pas entrer un nouveau nom qui soit vide.");
     }
 }
+/*Fonction qui sert a enclencher la fonction suppression dans process.php*/
 /*Cette fonction s'enclenche lors d'un clique sur le bouton renommer*/
 function suppression(nomFichier){
     var path = $('#repertoireCourant').text() + '/' + nomFichier;
