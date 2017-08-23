@@ -11,7 +11,7 @@ function echoGenerique($tabl_dossier, $pathDossier, $i, $d) {
     if (is_dir($pathDossier)) {
         echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>" . $tabl_dossier[$i] . "</p></div>";
     } else {
-        echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier)) . "'><i class='fa fa-2x fa-file-o'></i><span class='fa fa-pencil-square-o btnRennomer' onclick='renommer(this.parentNode.id)'></span><span class='btnSuppression fa fa-trash-o' aria-hidden='true' onclick='suppression(this.parentNode.id)'></span><p>" . $tabl_dossier[$i] . "</p></div>";
+        echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier)) . "'><i class='fa fa-2x fa-file-o'></i><span class=' fa fa-pencil-square-o btnRennomer'style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Renommer' onclick='renommer(this.parentNode.id)'></span><span class='btnSuppression fa fa-trash-o' aria-hidden='true' btnRennomer'style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Supprimer'   onclick='suppression(this.parentNode.id)'></span><p>" . $tabl_dossier[$i] . "</p></div>";
     }
 }
 

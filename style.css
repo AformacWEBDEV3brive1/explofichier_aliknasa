@@ -107,5 +107,13 @@ body div header form input:hover {
         float:left;
     }
 }
+.btnRennomer:hover
+{
+    color: #0000FF;
+}
+.btnSuppression:hover
+{
+    color: #0000FF;
+}
 
 
