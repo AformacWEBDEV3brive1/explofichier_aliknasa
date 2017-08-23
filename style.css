@@ -67,6 +67,12 @@ body div header form input:hover {
     text-align: right;
 }
 
+
+.phpOS
+{
+	float: right;
+}
+
 @media screen and (min-width: 769px){
     .ligne {
         margin-right: 4%;

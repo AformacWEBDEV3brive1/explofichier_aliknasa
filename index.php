@@ -27,6 +27,7 @@
                 <form class="animated fadeInLeft">
                     <input id ="retour" type="button" value="Retour" onclick="clickRetour()">
                     <input type="button" value="ajout fichier" onclick="creation()">
+                    <p id="OS" class="phpOS"></p>
                 </form>
                 <h1 class="animated fadeInRight">Votre explorateur de fichiers</h1>
             </header>

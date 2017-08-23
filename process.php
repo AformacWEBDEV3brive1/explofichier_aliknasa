@@ -173,4 +173,9 @@ function clickRetour() {
     }
 }
 
+function getOS()
+{
+    echo PHP_OS;
+}
+
 ?>

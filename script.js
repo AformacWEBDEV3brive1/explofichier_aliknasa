@@ -24,6 +24,15 @@ function demander()
             	else
             		{
             			$('#dossier').html(reponse);
+            			
+            	        $.ajax({
+            	            type: "post",
+            	            url: "process.php",
+            	            data: {folder: 'getOS'},
+            	            success: function (reponse) {
+            	            	$('#OS').html(reponse);
+            	            }
+            	        });
             		}
             }
         });
