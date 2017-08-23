@@ -32,13 +32,13 @@ body div header form input:hover {
 
     background-color:white;
 }
-
 .btnSuppression
 {
 	/*width: 1%;*/
 	border-radius:10px;
 	border-color: red;
 	background-color: #ff6666;
+        float:right;
 }
 
 .btnSuppression:hover
