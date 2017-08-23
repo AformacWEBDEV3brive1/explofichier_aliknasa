@@ -28,7 +28,7 @@ function dossier() {
 
     if (is_dir($pathTemp) == true) {
         $tabl_dossier = scandir($pathTemp);
-        /* Il y a un delai de 3 secondes par default donc on démarre a -3 pour que l'animation se déclenche au chargement de la page */
+        
         $d = 0;
 
         for ($i = 0; $i < count($tabl_dossier); $i++) {
