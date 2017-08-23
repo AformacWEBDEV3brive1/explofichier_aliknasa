@@ -8,14 +8,39 @@ $info = $_POST['folder'];
 $info();
 
 function echoGenerique($tabl_dossier, $pathDossier, $i, $d) {
-
-
-
     if (is_dir($pathDossier)) {
         echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>" . $tabl_dossier[$i] . "</p></div>";
     } else {
         echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier)) . "'><i class='fa fa-2x fa-file-o'></i><span class='fa fa-pencil-square-o btnRennomer' onclick='renommer(this.parentNode.id)'></span><span class='btnSuppression fa fa-trash-o' aria-hidden='true' onclick='suppression(this.parentNode.id)'></span><p>" . $tabl_dossier[$i] . "</p></div>";
     }
+}
+
+function triGenerique($pathTemp, $tabl_dossier)
+{
+    $tabl_fichier = array();
+    
+    //print_r($tabl_dossier);
+    $longueurTableau = count($tabl_dossier);
+    for($compteur = 0; $compteur < $longueurTableau; $compteur++)
+    {
+        $pathDossier = $pathTemp . "/" . $tabl_dossier[$compteur];
+        
+        if(is_file($pathDossier))
+        {
+            array_push($tabl_fichier, $tabl_dossier[$compteur]);
+            unset($tabl_dossier[$compteur]);
+        }
+    }
+    
+    sort($tabl_dossier, SORT_NATURAL | SORT_FLAG_CASE);
+    sort($tabl_fichier, SORT_NATURAL | SORT_FLAG_CASE);
+    
+    foreach($tabl_fichier as $file)
+    {
+        array_push($tabl_dossier, $file);
+    }
+    
+    return array_values($tabl_dossier);
 }
 
 function dossier() {
@@ -28,19 +53,21 @@ function dossier() {
 
     if (is_dir($pathTemp) == true) {
         $tabl_dossier = scandir($pathTemp);
-        /* Il y a un delai de 3 secondes par default donc on démarre a -3 pour que l'animation se déclenche au chargement de la page */
+        
+        $tabl_dossier = triGenerique($pathTemp, $tabl_dossier);
+      
         $d = 0;
 
         for ($i = 0; $i < count($tabl_dossier); $i++) {
-
-            $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
-            if ($tabl_dossier[$i][0] != '.') {
-
-            $d = $d + 0.1;
+    
+            if ($tabl_dossier[$i] != null && $tabl_dossier[$i] != "" && $tabl_dossier[$i][0] != '.') {
+                $pathDossier = $pathTemp . "/" . $tabl_dossier[$i];
+                $d = $d + 0.1;
                 echoGenerique($tabl_dossier, $pathDossier, $i, $d);
             }
         }
-    } else {
+    } 
+    else {
         echo "Nom d'utilisateur invalide";
     }
 }
@@ -49,6 +76,7 @@ function envoyer() {
     $doss = "/home/" . $_POST['nameFolder'];
     if (is_dir($doss) == true) {
         $tabl_dossier = scandir($doss);
+        $tabl_dossier = triGenerique($doss, $tabl_dossier);
 
         $d = 0;
         for ($i = 0; $i < count($tabl_dossier); $i++) {
@@ -84,6 +112,8 @@ function testClickDossier() {
     //$tabl_dossier = preg_split('/\s+/', $liste_dossier);
 
     $tabl_dossier = scandir($_POST['repertoire'] . '/' . $_POST['dossier']);
+    $tabl_dossier = triGenerique($_POST['repertoire'] . '/' . $_POST['dossier'], $tabl_dossier);
+    
     $d = 0;
     for ($i = 0; $i < count($tabl_dossier); $i++) {
 
@@ -114,6 +144,8 @@ function creation() {
     //print_r(shell_exec("whoami"));
 
     $tabl_dossier = scandir($_POST['repertoire']);
+    $tabl_dossier = triGenerique($repert, $tabl_dossier);
+    
     $d = 0;
     for ($i = 0; $i < count($tabl_dossier); $i++) {
 
@@ -131,6 +163,7 @@ function renommer() {
     $command = shell_exec('mv ' . $_POST['fichier'] . ' ' . $_POST['nom']);
     
     $tabl_dossier = scandir($_POST['repertoire']);
+    $tabl_dossier = triGenerique($_POST['repertoire'], $tabl_dossier);
     
     for ($i = 0; $i < count($tabl_dossier); $i++) {
         
@@ -144,6 +177,8 @@ function suppression() {
     $command = shell_exec('rm ' . $_POST['fichier']);
 
     $tabl_dossier = scandir($_POST['repertoire']);
+    $tabl_dossier = triGenerique($_POST['repertoire'], $tabl_dossier);
+    
     $d = 0;
     for ($i = 0; $i < count($tabl_dossier); $i++) {
 
@@ -160,6 +195,8 @@ function suppression() {
 function clickRetour() {
 
     $tabl_dossier = scandir($_POST['repertoire']);
+    $tabl_dossier = triGenerique($_POST['repertoire'], $tabl_dossier);
+    
     $d = 0;
     for ($i = 0; $i < count($tabl_dossier); $i++) {
 
