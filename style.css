@@ -26,32 +26,13 @@ body div header form input {
     border-radius:5px;
     width:15%;
     height:50px;
-    border-style:inset;
+    border-style:outset;
 }
 body div header form input:hover {
-
+    border-style:inset;
     background-color:white;
 }
-.btnSuppression
-{
-    position:relative;
-    left:65%;
-    font-size: 21px;
-    
-}
-.btnRennomer{
-    position:relative;
-    left:60%;
-    font-size: 21px;
-}
-.btnSuppression:hover
-{
-    color: #0000FF;
-}
-.btnRennomer:hover
-{
-    color: #0000FF;
-}
+
 .folder  {
     border: 1px solid #0000FF;
     border-radius:10px;
@@ -76,11 +57,28 @@ body div header form input:hover {
     text-align: right;
 }
 
+
+.phpOS
+{
+	float: right;
+}
+
 @media screen and (min-width: 769px){
     .ligne {
         margin-right: 4%;
         margin-bottom: 15px;
         margin-left: 4%;
+    }
+    .btnSuppression
+    {
+        position:relative;
+        left:65%;
+        font-size: 21px;
+    }
+    .btnRennomer{
+        position:relative;
+        left:60%;
+        font-size: 21px;
     }
 }
 
@@ -99,6 +97,23 @@ body div header form input:hover {
         width:30%;
 
     }
+    .btnSuppression
+    {
+        position:relative;
+        float:right;
+    }
+    .btnRennomer{
+        position:relative;
+        float:left;
+    }
+}
+.btnRennomer:hover
+{
+    color: #0000FF;
+}
+.btnSuppression:hover
+{
+    color: #0000FF;
 }
 
 
