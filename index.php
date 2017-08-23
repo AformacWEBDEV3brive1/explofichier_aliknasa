@@ -32,7 +32,6 @@
                 <h1 class="animated fadeInRight">Votre explorateur de fichiers</h1>
             </header>
             <div>
-
                 <div class="animated fadeInLeft row">
                     <p class="col-2 home">/home/</p>
                     <input type="text" name="position" class="inputUn col-7 "/>
@@ -42,7 +41,6 @@
                 <div id="dossier" class="row">
                     <!--liste des fichiers/dossiers-->
                 </div>
-
             </div>
         </div>
     </body>
