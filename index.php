@@ -26,7 +26,7 @@
             <header>
                 <form class="animated fadeInLeft">
                     <input id ="retour" type="button" value="Retour" onclick="clickRetour()">
-                    <input type="button" value="ajout fichier" onclick="creation()">
+                    <input type="button" value="Ajout fichier" title="Ajout d'un nouveau fichier .txt" onclick="creation()">
                     <p id="OS" class="phpOS"></p>
                 </form>
                 <h1 class="animated fadeInRight">Votre explorateur de fichiers</h1>
@@ -36,7 +36,7 @@
                 <div class="animated fadeInLeft row">
                     <p class="col-2 home">/home/</p>
                     <input type="text" name="position" class="inputUn col-7 "/>
-                    <input type="submit" class="col-2" value="envoyer" onclick="envoyer()">
+                    <input type="button" class="col-2" value="envoyer" onclick="envoyer()"/>
                 </div>
                 <div id="repertoireCourant" class="animated fadeInRight chemin"></div>
                 <div id="dossier" class="row">
