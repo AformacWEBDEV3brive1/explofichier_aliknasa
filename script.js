@@ -2,7 +2,7 @@
 
 function demander()
 {
-    var person = prompt("Entrez votre nom d'utulisateur");
+    var person = prompt("Entrez votre nom d'utilisateur");
     if (person != null && person != ""){
         $("#repertoireCourant").html("/home/"+person);
         
@@ -150,3 +150,19 @@ function creation() {
     });
 }
 
+function suppression(nomFichier) {
+	var path = $('#repertoireCourant').text() + '/' + nomFichier;
+	
+	if(confirm("Attention: Etes-vous certain de vouloir supprimer ce fichier? Suppression de " + path))
+	{
+	    $.ajax({
+	        url: "process.php",
+	        type: "post",
+	        data: {folder: "suppression", repertoire: $('#repertoireCourant').text(), fichier: path},
+	        success: function(reponse){
+	            $("#dossier").html(reponse);
+	        	alert("Le fichier" + path + " a été supprimé");
+	        }
+	    });
+	}
+}
