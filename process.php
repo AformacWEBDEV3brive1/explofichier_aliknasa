@@ -14,7 +14,7 @@ function echoGenerique($tabl_dossier, $pathDossier, $i, $d) {
     if (is_dir($pathDossier)) {
         echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ceci est un dossier' onclick='clickDossier(this.id)'><i class='fa fa-2x fa-folder-o'></i><p>" . $tabl_dossier[$i] . "</p></div>";
     } else {
-        echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier)) . "'><i class='fa fa-2x fa-file-o'></i><input class='btnSuppression' type='button' value='-' onclick='suppression(this.parentNode.id)'/><p>" . $tabl_dossier[$i] . "</p></div>";
+        echo "<div id='" . $tabl_dossier[$i] . "' class='animated fadeInDown folder ligne col-md-3' style='animation-delay:" . $d . "s;' data-toggle='tooltip()' title='Ce fichier a été mofifié le : " . date('F d Y H:i:s', filemtime($pathDossier)) . "'><i class='fa fa-2x fa-file-o'></i><span class='fa fa-pencil-square-o btnRennomer' onclick='renommer(this.parentNode.id)'></span><span class='btnSuppression fa fa-trash-o' aria-hidden='true' onclick='suppression(this.parentNode.id)'></span><p>" . $tabl_dossier[$i] . "</p></div>";
     }
 }
 
@@ -127,9 +127,21 @@ function creation() {
     }
 }
 
+function renommer() {
+    $command = shell_exec('mv ' . $_POST['fichier'] . ' ' . $_POST['nom']);
+    
+    $tabl_dossier = scandir($_POST['repertoire']);
+    
+    for ($i = 0; $i < count($tabl_dossier); $i++) {
+        
+        $pathDossier = $_POST['repertoire'] . '/' . $tabl_dossier[$i];
+        
+        echoGenerique($tabl_dossier, $pathDossier, $i);
+    }
+}
+
 function suppression() {
     $command = shell_exec('rm ' . $_POST['fichier']);
-    //echo "Le fichier" . $_POST['fichier'] . " a été supprimé";
 
     $tabl_dossier = scandir($_POST['repertoire']);
     $d = 0;

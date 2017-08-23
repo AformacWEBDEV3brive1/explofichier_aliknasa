@@ -151,6 +151,30 @@ function creation() {
     });
 }
 
+function renommer(nomFichier) {
+	var path = $('#repertoireCourant').text() + '/' + nomFichier;
+	var nouveauNom = prompt("Quel nouveau nom voulez-vous donner au fichier " + path + " (n'oubliez pas de préciser l'extension)");
+	
+	if(nouveauNom!= "" && nouveauNom != null)
+	{
+		var pathNouveauNom = $('#repertoireCourant').text() + '/' + nouveauNom;
+		
+	    $.ajax({
+	        url: "process.php",
+	        type: "post",
+	        data: {folder: "renommer", repertoire: $('#repertoireCourant').text(), fichier: path , nom: pathNouveauNom},
+	        success: function(reponse){
+	            $("#dossier").html(reponse);
+	        	alert("Le fichier" + nomFichier + " a été renommé en " + nouveauNom);
+	        }
+	    });
+	}
+	else if(nouveauNom == "")
+	{
+		alert("Vous ne pouvez pas entrer un nouveau nom qui soit vide.");
+	}
+}
+
 function suppression(nomFichier) {
 	var path = $('#repertoireCourant').text() + '/' + nomFichier;
 	

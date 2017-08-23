@@ -34,20 +34,15 @@ body div header form input:hover {
 }
 .btnSuppression
 {
-	/*width: 1%;*/
-	border-radius:10px;
-	border-color: red;
-	background-color: #ff6666;
-        float:right;
+    position:relative;
+    left:65%;
+    font-size: 21px;
 }
-
-.btnSuppression:hover
-{
-	/*width: 1%;*/
-	border-radius:10px;
-	background-color: red;
+.btnRennomer{
+    position:relative;
+    left:60%;
+    font-size: 21px;
 }
-
 .folder  {
     border: 1px solid #0000FF;
     border-radius:10px;
